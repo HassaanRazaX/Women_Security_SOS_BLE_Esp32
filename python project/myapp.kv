@@ -1,0 +1,419 @@
+ScreenManager:
+    LoginScreen:
+    HomeScreen:
+    SignUpScreen:  # Add this line to include the SignUp screen
+
+<LoginScreen>:
+    name: "login"
+    canvas.before:
+        Color:
+            rgba: (0.85, 0.9, 1, 1)  # Soft pastel blue background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: 350, 500
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            padding: 20
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)  # White background for login box
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]  # Fully rounded corners
+
+            Image:
+                source: "logo.png"
+                size_hint: None, None
+                size: 60, 60
+                pos_hint: {"center_x": 0.5}
+
+            Label:
+                text: "CELESTIA"
+                font_size: 18
+                bold: True
+                color: 0, 0, 0, 1
+                pos_hint: {"center_x": 0.5}
+
+            Label:
+                text: "Login"
+                font_size: 23
+                bold: True
+                color: 0.235, 0.474, 0.384, 1  # Dark green
+
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: 60  # Adjust height as needed
+                spacing: 5
+
+                Label:
+                    text: "Email"
+                    color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 20
+                    font_size: 14
+                    halign: "left"
+                    text_size: self.size
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: 40  # Adjust height as needed
+
+                    TextInput:
+                        id: email
+                        hint_text: "Enter your email"
+                        hint_text_color: (0.7, 0.7, 0.7, 1)  # Light grey placeholder
+                        multiline: False
+                        size_hint_y: None
+                        height: 30
+                        foreground_color: 0, 0, 0, 1  # Black text color
+                        background_color: 0, 0, 0, 0  # Transparent background
+                        cursor_color: 0, 0.5, 0.3, 1  # Dark green cursor
+
+
+                    Widget:
+                        size_hint_y: None
+                        height: 2  # Thickness of the line
+                        canvas.before:
+                            Color:
+                                rgba: 0.0, 0.5, 0.3, 1  # Dark green color
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: 60  # Adjust height as needed
+                spacing: 5
+
+                Label:
+                    text: "Password"
+                    color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 20
+                    font_size: 14
+                    halign: "left"
+                    text_size: self.size  # Ensures alignment works properly
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: 40  # Adjust height as needed
+
+                    TextInput:
+                        id: password
+                        hint_text: "Enter your password"
+                        hint_text_color: (0.7, 0.7, 0.7, 1)  # Light grey placeholder
+                        multiline: False
+                        size_hint_y: None
+                        height: 30
+                        foreground_color: 0, 0, 0, 1  # Black text color
+                        background_color: 0, 0, 0, 0  # Transparent background
+                        cursor_color: 0, 0.5, 0.3, 1  # Dark green cursor
+                        password: True  # Hides password characters
+
+
+                    Widget:
+                        size_hint_y: None
+                        height: 2  # Thickness of the line
+                        canvas.before:
+                            Color:
+                                rgba: 0.0, 0.5, 0.3, 1  # Dark green color
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+
+
+
+            Label:
+                id: error_label
+                text: ""
+                color: 1, 0, 0, 1
+                size_hint_y: None
+                height: 20
+
+            Button:
+                text: "Login"
+                size_hint: None, None
+                size: 250, 50
+                pos_hint: {"center_x": 0.5}
+                background_normal: ""
+                background_color: 0.466, 0.733, 0.635, 1  # Green color
+
+                on_release: root.login()
+                canvas.before:
+                    Color:
+                        rgba: (0.466, 0.733, 0.635, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [50]
+
+            Button:
+                text: "Don't have an account? Sign Up"
+                size_hint: None, None
+                size: 250, 50
+                pos_hint: {"center_x": 0.5}
+                background_normal: ""
+                background_color: 0.466, 0.733, 0.635, 1
+                on_press: app.root.current = "signup"
+                canvas.before:
+                    Color:
+                        rgba: (0.466, 0.733, 0.635, 1)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [25]
+
+<HomeScreen>:
+    name: "home"
+    canvas.before:
+        Color:
+            rgba: (0.85, 0.9, 1, 1)  # Soft pastel blue background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 50
+        spacing: 20
+
+
+        Label:
+            text: "Welcome to the Home Screen!"
+            font_size: 25
+            color: 0.235, 0.474, 0.384, 1  # Dark green
+
+        Button:
+            text: "BACK"
+            size_hint: None, None
+            size: 250, 50
+            pos_hint: {"center_x": 0.5}
+            background_normal: ""
+            background_color: 0.466, 0.733, 0.635, 1
+            on_press: app.root.current = "login"
+            canvas.before:
+                Color:
+                    rgba: (0.466, 0.733, 0.635, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [25]
+
+<SignUpScreen>:
+    name: "signup"
+    canvas.before:
+        Color:
+            rgba: (0.85, 0.9, 1, 1)  # Soft pastel blue background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Label:
+            id: message_label
+            text: ""
+            color: 1, 0, 0, 1  # Red color for error messages
+            font_size: 14
+            size_hint_y: None
+            height: 20
+            pos_hint: {"center_x": 0.5, "top": 0.82}
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: 350, 500  # Keeps the box size fixed
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}  # Centering the whole signup box
+            padding: 20
+            spacing: 15
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)  # White background for signup box
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]
+
+            # Logo and Brand Name (Positioned exactly like in login screen)
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: 100  # Match login screen height
+                spacing: 5
+                pos_hint: {"center_x": 0.5, "top": 1}  # Align like login screen
+
+                Image:
+                    source: "logo.png"
+                    size_hint: None, None
+                    size: 60, 60  # Keep size same as login screen
+                    pos_hint: {"center_x": 0.5}
+
+                Label:
+                    text: "CELESTIA"
+                    font_size: 20  # Match login screen font size
+                    bold: True
+                    color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 25
+                    pos_hint: {"center_x": 0.5}
+
+            # Sign Up Title (Positioned exactly like login screen)
+            Label:
+                text: "Sign Up"
+                font_size: 23
+                bold: True
+                color: 0.235, 0.474, 0.384, 1  # Dark green
+                size_hint_y: None
+                height: 40
+                pos_hint: {"center_x": 0.5}
+
+            # Input Fields
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: 160  # Increased height for extra field
+                spacing: 5
+                pos_hint: {"center_x": 0.5}  # Centering the inputs properly
+
+                # Email Field
+                Label:
+                    text: "Email"
+                    color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 18
+                    font_size: 14
+
+                    halign: "left"
+                    text_size: self.size
+
+                TextInput:
+                    id: email_input
+                    hint_text: "Enter your email"
+                    hint_text_color: (0.7, 0.7, 0.7, 1)
+                    multiline: False
+                    size_hint_y: None
+                    height: 27
+                    foreground_color: 0, 0, 0, 1
+                    background_color: 0, 0, 0, 0
+                    cursor_color: 0, 0.5, 0.3, 1
+
+                Widget:
+                    size_hint_y: None
+                    height: 2
+                    canvas.before:
+                        Color:
+                            rgba: 0.0, 0.5, 0.3, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+                # Password Field
+                Label:
+                    text: "Password"
+                    color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 18
+                    font_size: 14
+                    halign: "left"
+                    text_size: self.size
+
+                TextInput:
+                    id: password_input
+                    hint_text: "Enter your password"
+                    hint_text_color: (0.7, 0.7, 0.7, 1)
+                    multiline: False
+                    size_hint_y: None
+                    height: 27
+                    foreground_color: 0, 0, 0, 1
+                    background_color: 0, 0, 0, 0
+                    cursor_color: 0, 0.5, 0.3, 1
+                    password: True
+
+                Widget:
+                    size_hint_y: None
+                    height: 2
+                    canvas.before:
+                        Color:
+                            rgba: 0.0, 0.5, 0.3, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+                # Confirm Password Field
+                Label:
+                    text: "Confirm Password"
+                    color: 0, 0, 0, 1
+                    size_hint_y: None
+                    height: 18
+                    font_size: 14
+                    halign: "left"
+                    text_size: self.size
+
+                TextInput:
+                    id: confirm_password_input
+                    hint_text: "Re-enter your password"
+                    hint_text_color: (0.7, 0.7, 0.7, 1)
+                    multiline: False
+                    size_hint_y: None
+                    height: 27
+                    foreground_color: 0, 0, 0, 1
+                    background_color: 0, 0, 0, 0
+                    cursor_color: 0, 0.5, 0.3, 1
+                    password: True
+
+                Widget:
+                    size_hint_y: None
+                    height: 2
+                    canvas.before:
+                        Color:
+                            rgba: 0.0, 0.5, 0.3, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+            # Sign Up and Back to Login Buttons
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: 120
+                spacing: 10
+                pos_hint: {"center_x": 0.5}
+
+                Button:
+                    text: "Sign Up"
+                    size_hint: None, None
+                    size: 250, 50
+                    pos_hint: {"center_x": 0.5}
+                    background_normal: ""
+                    background_color: 0.466, 0.733, 0.635, 1
+                    on_press: root.register_user()
+                    canvas.before:
+                        Color:
+                            rgba: (0.466, 0.733, 0.635, 1)
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [25]
+
+                Button:
+                    text: "Back to Login"
+                    size_hint: None, None
+                    size: 250, 50
+                    pos_hint: {"center_x": 0.5}
+                    background_normal: ""
+                    background_color: 0.466, 0.733, 0.635, 1
+                    on_press: root.go_to_login()
+                    canvas.before:
+                        Color:
+                            rgba: (0.466, 0.733, 0.635, 1)
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [25]

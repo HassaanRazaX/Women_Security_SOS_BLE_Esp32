@@ -1,0 +1,23 @@
+{
+    "user1@example.com": "pass123",
+    "admin": "admin123",
+    "testuser": "mypassword",
+    "john.doe@gmail.com": "john2024",
+    "jane.smith@yahoo.com": "janePass",
+    "mike_adams@outlook.com": "mike987",
+    "sarah.connor@gmail.com": "sarahTerminator",
+    "developer@company.com": "devPass!",
+    "random_user@xyz.com": "random456",
+    "kivyuser@example.com": "kivyrocks",
+    "eishashkh0@gmail.com": "66778899",
+    "eisha": "1234",
+    "abcd": "1234",
+    "qwer": "1234",
+    "worst": "1234",
+    "happy": {
+        "password": "1234"
+    },
+    "hithere@abc.com": {
+        "password": "asdf"
+    }
+}
